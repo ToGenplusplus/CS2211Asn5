@@ -1,0 +1,147 @@
+Script started on Mon 03 Dec 2018 10:59:47 PM EST
+bash-4.2$ pwd
+/gaul/s1/student/2018/towoaje/Courses/cs2211/asn5
+bash-4.2$ date
+Mon Dec  3 22:59:53 EST 2018
+bash-4.2$ who am i
+towoaje  pts/22       2018-12-03 22:59
+bash-4.2$ make 
+cc -c main.c
+cc -c matrix.c
+matrix.c: In function ‘matrix_get’:
+matrix.c:40:24: warning: initialization makes integer from pointer without a cast [enabled by default]
+         Value search = bstree_search(m,newkey);
+                        ^
+matrix.c:42:19: warning: comparison between pointer and integer [enabled by default]
+         if(search != NULL)
+                   ^
+matrix.c:45:7: warning: assignment makes pointer from integer without a cast [enabled by default]
+   val = search;
+       ^
+matrix.c:50:17: warning: return makes pointer from integer without a cast [enabled by default]
+                 return search;// return null
+                 ^
+cc -c bstree.c
+cc -c datatype.c
+cc -o mymatrix main.o matrix.o bstree.o datatype.o
+bash-4.2$ ./mymatrix
+enter 2 strings consecutively, when done entering press Ctrl D to print tree
+sss
+sss
+temi
+owoaje
+sss
+sss
+hi
+you
+332222
+43222
+check again
+hi im 
+sorry
+sorry
+hi
+you
+String1	Sring2	Occurrence
+332222	43222	1
+check	again	1
+hi	im	1
+hi	you	2
+sorry	sorry	1
+sss	sss	2
+temi	owoaje	1
+bash-4.2$ ./mymtrix
+bash: ./mymtrix: No such file or directory
+bash-4.2$ ./mymatrix
+enter 2 strings consecutively, when done entering press Ctrl D to print tree
+String1	Sring2	Occurrence
+bash-4.2$ ./mymatrix
+enter 2 strings consecutively, when done entering press Ctrl D to print tree
+33333 33333
+33333 33333
+33333 33333
+33333 33333
+33333 33333
+String1	Sring2	Occurrence
+33333	33333	5
+bash-4.2$ cat main.c
+#include <stdio.h>
+#include <stdlib.h>
+#include "matrix.h"
+/**
+ *Temi Owoaje, 250980280-.	
+ *Main Program.
+ *Program creates a mtrix using a binary search tree.
+ * */
+
+int main(void)
+{
+
+char ind1[200],ind2[200];
+Value val= 1;
+
+Matrix m = matrix_construction();// initialize matrix construction.
+printf("enter 2 strings consecutively, when done entering press Ctrl D to print tree\n");
+while(scanf("%s %s", ind1, ind2)==2) 
+{
+
+	unsigned char isin = matrix_isin(m, ind1, ind2);
+	
+	if(isin == 0)// check to see if node is in matrix.
+	{
+		matrix_set(m,ind1,ind2,val);// insert node into tree
+
+	}
+	else// if node is already in matrix.
+	{
+		matrix_inc(m,ind1,ind2,val);
+
+	}
+	
+	
+}
+
+printf("String1\tSring2\tOccurrence\n");
+	
+
+matrix_list(m);// traverse the three and print out nodes with their occurence.
+
+matrix_destruction(m);// deallocate all memory used by matrix.
+
+
+
+}
+bash-4.2$ make clean
+rm -f mymatrix *.o core
+bash-4.2$ ls
+bstree.c  bstree.h  datatype.c	datatype.h  main.c  makefile  matrix.c	matrix.h  SubmForm.txt	tst
+bash-4.2$ make
+cc -c main.c
+cc -c matrix.c
+matrix.c: In function ‘matrix_get’:
+matrix.c:40:24: warning: initialization makes integer from pointer without a cast [enabled by default]
+         Value search = bstree_search(m,newkey);
+                        ^
+matrix.c:42:19: warning: comparison between pointer and integer [enabled by default]
+         if(search != NULL)
+                   ^
+matrix.c:45:7: warning: assignment makes pointer from integer without a cast [enabled by default]
+   val = search;
+       ^
+matrix.c:50:17: warning: return makes pointer from integer without a cast [enabled by default]
+                 return search;// return null
+                 ^
+cc -c bstree.c
+cc -c datatype.c
+cc -o mymatrix main.o matrix.o bstree.o datatype.o
+bash-4.2$ ls
+bstree.c  bstree.o    datatype.h  main.c  makefile  matrix.h  mymatrix	    tst
+bstree.h  datatype.c  datatype.o  main.o  matrix.c  matrix.o  SubmForm.txt
+bash-4.2$ make clean
+rm -f mymatrix *.o core
+bash-4.2$ ls
+bstree.c  bstree.h  datatype.c	datatype.h  main.c  makefile  matrix.c	matrix.h  SubmForm.txt	tst
+bash-4.2$ exit
+exit
+
+Script done on Mon 03 Dec 2018 11:03:19 PM EST
